@@ -3,7 +3,7 @@
 #include "Header.h"
 #include <conio.h>
 #include <cstdlib>
-#include <limits>
+
 
 int main() {
     politics game;
@@ -44,8 +44,8 @@ int main() {
         cout << "\n00. Exit";
         cout << "\nEnter your choice: ";
 
-        cin >> choice;
-     /*   cin.ignore(numeric_limits<streamsize>::max(), '\n');*/
+        cin >> choice;// no need to write limit 
+ 
 
         system("cls");
         switch (choice) {
@@ -153,6 +153,7 @@ int main() {
         }
         case 00: running = false; break;
         default: cout << "Invalid choice!";
+            system("pause");
         }
         game.cleanPopulation();
         if (amount <= 0) { amount = 0; }

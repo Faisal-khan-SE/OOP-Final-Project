@@ -162,12 +162,7 @@ void population::populationDetail() {
 }
 
 void KingdomEngine::displayKingdom() {
-  /*  for (int i = 0; i < row; i++) {
-        for (int j = 0; j < column; j++) {
-            cout << ptr[i][j];
-        }
-        cout << endl;
-    }*/
+    //unnecessary loops have been removed
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < column; j++) {
             // Add colors based on content
