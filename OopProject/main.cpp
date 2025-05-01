@@ -45,7 +45,7 @@ int main() {
         cout << "\nEnter your choice: ";
 
         cin >> choice;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+     /*   cin.ignore(numeric_limits<streamsize>::max(), '\n');*/
 
         system("cls");
         switch (choice) {

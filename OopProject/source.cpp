@@ -4,6 +4,14 @@
 #include <cstdlib>
 #include <fstream>
 using namespace std;
+void SetColor(int color) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, color);
+}
+void ResetColor() {
+    SetColor(8);  // Default gray
+}
+
 bool famine = false;
 int faisal_vote = 0;
 int Ehtasham_vote = 0;
@@ -154,13 +162,37 @@ void population::populationDetail() {
 }
 
 void KingdomEngine::displayKingdom() {
-    for (int i = 0; i < row; i++) {
+  /*  for (int i = 0; i < row; i++) {
         for (int j = 0; j < column; j++) {
             cout << ptr[i][j];
         }
         cout << endl;
+    }*/
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < column; j++) {
+            // Add colors based on content
+            if (ptr[i][j] == 'L') SetColor(11);      // cyan for people
+            else if (ptr[i][j] == '1') SetColor(12); // Red for politician 1
+            else if (ptr[i][j] == '2') SetColor(9);  // Blue for politician 2
+            else if (ptr[i][j] == '+' || ptr[i][j] == 'A' || ptr[i][j] == 'R' ||
+                ptr[i][j] == 'M' || ptr[i][j] == 'Y') SetColor(6);  // Yellow for borders/army
+            else if (ptr[i][j] == 'S' || ptr[i][j] == 'H' || ptr[i][j] == 'O' ||
+                ptr[i][j] == 'P') SetColor(12); // Cyan for shop
+            else if (ptr[i][j] == 'F' || ptr[i][j] == 'O' || ptr[i][j] == 'D') SetColor(10); // Yellow for food
+            else if (ptr[i][j] == 'B' || ptr[i][j] == 'A' || ptr[i][j] == 'N' ||
+                ptr[i][j] == 'K') SetColor(15); // Purple for bank
+            else {
+                SetColor(7);
+            }
+            cout << ptr[i][j];
+            ResetColor();
+        }
+        cout << endl;
     }
 }
+
+
+
 
 void economy::showEconomy() {
     cout << "Economy of our region is now: " << money;
